@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>A Little Game About Us ❤️</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- FLOATING HEARTS -->
+    <!-- ================================= -->
+
+    <div class="hearts">
+
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>♡</span>
+        <span>♥</span>
+
+    </div>
+
+
+
+    <!-- ================================= -->
+    <!-- START SCREEN -->
+    <!-- ================================= -->
+
+    <section
+        id="start-screen"
+        class="screen active"
+    >
+
+        <div class="card">
+
+            <div class="small-text">
+                A LITTLE SOMETHING FOR YOU
+            </div>
+
+            <h1>
+                For My
+                <br>
+                Favourite Person ❤️
+            </h1>
+
+            <p>
+                I made you a tiny little game...
+            </p>
+
+            <p class="soft-text">
+                Don't rush through it.
+            </p>
+
+            <button onclick="startGame()">
+                Start the game ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- SECTION 1 — RAPID FIRE -->
+    <!-- ================================= -->
+
+    <section
+        id="rapid-fire"
+        class="screen"
+    >
+
+        <div class="card">
+
+            <div class="section-number">
+                01 / 04
+            </div>
+
+            <h2>
+                Rapid Fire ⚡
+            </h2>
+
+            <p id="question">
+                Cuddles 🫂 or Kisses 💋?
+            </p>
+
+            <div class="choice-container">
+
+                <button
+                    class="choice"
+                    onclick="chooseRapid(0)"
+                    id="choice1"
+                >
+                    Cuddles 🫂
+                </button>
+
+                <button
+                    class="choice"
+                    onclick="chooseRapid(1)"
+                    id="choice2"
+                >
+                    Kisses 💋
+                </button>
+
+            </div>
+
+            <p
+                id="rapid-feedback"
+                class="feedback"
+            ></p>
+
+            <div class="progress">
+
+                <span id="rapid-progress"></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- SECTION 2 — REASONS -->
+    <!-- ================================= -->
+
+    <section
+        id="reasons"
+        class="screen"
+    >
+
+        <div class="card">
+
+            <div class="section-number">
+                02 / 04
+            </div>
+
+            <h2>
+                Reasons Why I Love You ❤️
+            </h2>
+
+            <p>
+                There are more than I could ever fit here...
+            </p>
+
+            <p class="soft-text">
+                Tap a heart to find out why.
+            </p>
+
+            <div
+                id="heart-container"
+                class="heart-container"
+            >
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(0)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(1)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(2)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(3)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(4)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(5)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(6)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(7)"
+                >
+                    ❤️
+                </button>
+
+                <button
+                    class="love-heart"
+                    onclick="showReason(8)"
+                >
+                    ❤️
+                </button>
+
+            </div>
+
+            <div
+                id="reason-display"
+                class="reason-display"
+            >
+                Tap one ❤️
+            </div>
+
+            <button
+                id="reasons-next"
+                class="hidden"
+                onclick="goToQuiz()"
+            >
+                Continue ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- SECTION 3 — HOW WELL DO YOU KNOW ME -->
+    <!-- ================================= -->
+
+    <section
+        id="quiz"
+        class="screen"
+    >
+
+        <div class="card">
+
+            <div class="section-number">
+                03 / 04
+            </div>
+
+            <h2>
+                How Well Do You Know Me? 👀
+            </h2>
+
+            <p id="quiz-question">
+                Question
+            </p>
+
+            <div id="quiz-options">
+                <!-- JavaScript adds answers here -->
+            </div>
+
+            <p
+                id="quiz-feedback"
+                class="feedback"
+            ></p>
+
+            <div class="progress">
+
+                <span id="quiz-progress"></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- SECTION 4 — TREASURE HUNT -->
+    <!-- ================================= -->
+
+    <section
+        id="treasure-screen"
+        class="screen"
+    >
+
+        <div class="card">
+
+            <div class="section-number">
+                04 / 04
+            </div>
+
+            <div class="big-heart">
+                💌
+            </div>
+
+            <h1>
+                One Last Thing...
+            </h1>
+
+            <p class="final-message">
+                You thought the game was over? 👀
+            </p>
+
+            <p>
+                Not quite.
+            </p>
+
+            <p class="soft-text">
+                Your final treasure is not on this screen.
+            </p>
+
+            <div class="treasure-box">
+
+                <p class="treasure-clue">
+                    🔐 FINAL CLUE
+                </p>
+
+                <p>
+                    Find something I wrote
+                    for you, hidden inside something we
+                    carry almost everywhere — just where
+                    you found my words last time.
+                </p>
+
+            </div>
+
+            <p class="soft-text">
+                Go find it. I'll wait. ❤️
+            </p>
+
+            <button onclick="unlockTreasure()">
+                I FOUND IT ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- TREASURE UNLOCKED -->
+    <!-- ================================= -->
+
+    <section
+        id="treasure-unlocked"
+        class="screen"
+    >
+
+        <div class="card">
+
+            <div class="big-heart">
+                💌
+            </div>
+
+            <div class="section-number">
+                TREASURE UNLOCKED
+            </div>
+
+            <h1>
+                You found it. 🥹
+            </h1>
+
+            <p class="final-message">
+                So you finally remembered where
+                my words were hiding.
+            </p>
+
+            <p>
+                Now go read them properly. ❤️
+            </p>
+
+            <p class="soft-text">
+                And this time...
+                don't forget them. 😭
+            </p>
+
+            <div class="final-code">
+
+                <span>
+                    STATUS:
+                </span>
+
+                LOVE YOU ♾️
+
+            </div>
+
+            <p>
+                Happy Boyfriend's Day,
+                my love. 💌
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

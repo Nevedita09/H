@@ -1,0 +1,802 @@
+/* ================================= */
+/* BASIC SETUP */
+/* ================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #351426 0%,
+            #160a12 40%,
+            #090509 100%
+        );
+
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ================================= */
+/* SCREEN */
+/* ================================= */
+
+.screen {
+    min-height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+
+    animation: fadeIn 0.7s ease;
+}
+
+
+/* ================================= */
+/* MAIN CARD */
+/* ================================= */
+
+.card {
+
+    width: min(650px, 92vw);
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background:
+        rgba(35, 15, 27, 0.82);
+
+    border:
+        1px solid
+        rgba(255, 143, 171, 0.25);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 50px rgba(255, 75, 125, 0.12),
+        inset 0 0 40px rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* ================================= */
+/* TEXT */
+/* ================================= */
+
+.small-text {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d89aaa;
+
+    margin-bottom: 25px;
+}
+
+
+.section-number {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: #d89aaa;
+
+    margin-bottom: 15px;
+}
+
+
+h1 {
+
+    font-size:
+        clamp(36px, 7vw, 58px);
+
+    line-height: 1.1;
+
+    color: #ff9fba;
+
+    margin:
+        10px 0 25px;
+
+    font-weight: normal;
+}
+
+
+h2 {
+
+    font-size:
+        clamp(30px, 6vw, 45px);
+
+    color: #ff9fba;
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+
+p {
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #f5dce4;
+}
+
+
+.soft-text {
+
+    color: #c99ba9;
+
+    font-style: italic;
+
+    font-size: 16px;
+}
+
+
+/* ================================= */
+/* BUTTONS */
+/* ================================= */
+
+button {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+button:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+button:active {
+
+    transform: scale(0.96);
+
+}
+
+
+/* ================================= */
+/* START / NEXT BUTTONS */
+/* ================================= */
+
+button:not(.choice):not(.love-heart) {
+
+    border: none;
+
+    padding:
+        15px 30px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5c8a,
+            #d93669
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255, 76, 125, 0.25);
+
+    margin-top: 20px;
+}
+
+
+/* ================================= */
+/* RAPID FIRE */
+/* ================================= */
+
+.choice-container {
+
+    display: flex;
+
+    gap: 18px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+
+.choice {
+
+    min-width: 220px;
+
+    padding:
+        20px 25px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(255, 143, 171, 0.3);
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: white;
+
+    font-size: 18px;
+}
+
+
+.choice:hover {
+
+    background:
+        rgba(255, 92, 138, 0.15);
+
+    border-color: #ff7fa2;
+
+    box-shadow:
+        0 0 25px
+        rgba(255, 92, 138, 0.2);
+}
+
+
+.feedback {
+
+    min-height: 35px;
+
+    color: #ffabc2;
+
+    font-size: 17px;
+
+    margin-top: 25px;
+}
+
+
+/* ================================= */
+/* PROGRESS BAR */
+/* ================================= */
+
+.progress {
+
+    height: 3px;
+
+    width: 100%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    margin-top: 30px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.progress span {
+
+    display: block;
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #ff759c;
+
+    transition:
+        width 0.4s ease;
+}
+
+
+/* ================================= */
+/* HEARTS */
+/* ================================= */
+
+.heart-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    max-width: 360px;
+
+    margin: 35px auto;
+}
+
+
+.love-heart {
+
+    width: 80px;
+
+    height: 80px;
+
+    margin: auto;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 45px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255, 80, 130, 0.3)
+        );
+
+    animation:
+        heartbeat 1.7s infinite;
+}
+
+
+.love-heart:hover {
+
+    transform: scale(1.2);
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255, 80, 130, 0.8)
+        );
+}
+
+
+.love-heart.used {
+
+    opacity: 0.25;
+
+    animation: none;
+
+    transform: scale(0.8);
+}
+
+
+.reason-display {
+
+    min-height: 75px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding:
+        10px 20px;
+
+    color: #ffd8e3;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* ================================= */
+/* QUIZ */
+/* ================================= */
+
+#quiz-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+.quiz-option {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255, 143, 171, 0.25);
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    color: #fff;
+
+    font-size: 17px;
+}
+
+
+.quiz-option:hover {
+
+    background:
+        rgba(255, 92, 138, 0.15);
+}
+
+
+.quiz-option.correct {
+
+    background:
+        rgba(70, 180, 120, 0.2);
+
+    border-color: #77d9a0;
+}
+
+
+.quiz-option.wrong {
+
+    background:
+        rgba(220, 70, 90, 0.2);
+
+    border-color: #ff7d91;
+}
+
+
+/* ================================= */
+/* FINAL / TREASURE HEART */
+/* ================================= */
+
+.big-heart {
+
+    font-size: 80px;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+
+.final-message {
+
+    font-size: 24px;
+
+    color: #ffb3c7;
+}
+
+
+/* ================================= */
+/* TREASURE HUNT */
+/* ================================= */
+
+.treasure-box {
+
+    margin:
+        30px auto;
+
+    padding: 25px;
+
+    max-width: 500px;
+
+    border:
+        1px solid
+        rgba(255, 143, 171, 0.3);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    box-shadow:
+        0 0 25px
+        rgba(255, 92, 138, 0.08);
+}
+
+
+.treasure-clue {
+
+    color: #ff8fab;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+.treasure-box p:not(.treasure-clue) {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #f5dce4;
+}
+
+
+/* ================================= */
+/* FINAL STATUS BOX */
+/* ================================= */
+
+.final-code {
+
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.3);
+
+    font-family: monospace;
+
+    color: #ff8fab;
+
+    letter-spacing: 1px;
+}
+
+
+.final-code span {
+
+    color: #8f7480;
+}
+
+
+/* ================================= */
+/* FLOATING BACKGROUND HEARTS */
+/* ================================= */
+
+.hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.hearts span {
+
+    position: absolute;
+
+    bottom: -50px;
+
+    color:
+        rgba(255, 120, 155, 0.12);
+
+    font-size: 30px;
+
+    animation:
+        floatUp linear infinite;
+}
+
+
+.hearts span:nth-child(1) {
+
+    left: 10%;
+
+    animation-duration: 9s;
+}
+
+
+.hearts span:nth-child(2) {
+
+    left: 25%;
+
+    animation-duration: 12s;
+
+    animation-delay: 2s;
+}
+
+
+.hearts span:nth-child(3) {
+
+    left: 45%;
+
+    animation-duration: 10s;
+
+    animation-delay: 4s;
+}
+
+
+.hearts span:nth-child(4) {
+
+    left: 65%;
+
+    animation-duration: 13s;
+}
+
+
+.hearts span:nth-child(5) {
+
+    left: 80%;
+
+    animation-duration: 11s;
+
+    animation-delay: 3s;
+}
+
+
+.hearts span:nth-child(6) {
+
+    left: 90%;
+
+    animation-duration: 15s;
+
+    animation-delay: 1s;
+}
+
+
+/* ================================= */
+/* ANIMATIONS */
+/* ================================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%, 100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+@keyframes floatUp {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        padding:
+            40px 22px;
+
+    }
+
+    .choice {
+
+        width: 100%;
+
+    }
+
+    .heart-container {
+
+        gap: 8px;
+
+    }
+
+    .treasure-box {
+
+        padding: 20px;
+
+    }
+
+    .treasure-box p:not(.treasure-clue) {
+
+        font-size: 17px;
+
+    }
+
+}
